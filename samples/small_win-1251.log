@@ -1,0 +1,198 @@
+20.05.2015 13:03:58 [Info] Импорт начат
+_bulkSize: 1000
+_doFindDuplicateObjects: True
+_doFindDuplicateRelations: True
+_doMakeAnaliticalRelations: True
+_talkDuplicationEpsilon: 1
+_smsDuplicationEpsilon: 1
+_forceGetAllObjects: True
+_forceGetAllObjectsDaysBefore: 3000
+_objectSettings.lastModifyTalk: 26.03.2015 4:03:54
+_objectSettings.lastModifySms: 26.03.2015 4:04:49
+_objectSettings.lastModifyStenogramm: 10.12.2014 3:05:07
+_objectSettings.lastModifyTask: 11.11.2012 15:55:40
+_objectSettings.lastModifyPlace: 11.11.2012 15:55:40
+_objectSettings.lastTalkId: 60908575
+_objectSettings.lastSmsId: 8169154
+_objectSettings.lastTaskId: 0
+_objectSettings.lastPlaceId: 50300628
+_shortBulkReport: False
+Address: testmag8
+Database: MagTalksBase
+Login: admin
+ImportTalks: False
+ImportSms: False
+ImportLocations: False
+ImportStenograms: False
+ImportOtm: True
+ImportSpeakers: False
+ImportAbonents: False
+AnalyticalMarks: Обработан; Важный; Не интересен; Выполнить; Нет ответа; Выполнен; Не прослушивается; Статистика; Записано Этн.; Этн.Выполнен; Записать на диск; Чужой; Пусто; Не доступен; Иностранный; Не наш объект; В работе; Записано Рус.; Записано Иностр.; Записано; Приостановлено; Выполнено для ВП; Дубль; Детализация; Сотрудник; Для аналитики
+NormalizeShortPhones: False
+LinkTalksToOtm: False
+
+20.05.2015 13:03:58 [Info] Требуется обработать объектов: 7573
+  Новых объектов: 7573
+    Talk: 0
+    Sms: 0
+    Task: 7573
+    Stenogram: 0
+  Оставшиеся с прошлого раза: 0
+    Talk: 0
+    Sms: 0
+    Task: 0
+    Stenogram: 0
+
+20.05.2015 13:03:58 [Info] Импорт Task
+
+20.05.2015 13:03:58 [Info] BulkSize: min=1000 max=1000 increment=100
+
+20.05.2015 13:04:02 [Info] Импорт порции новых объектов [Task]: 7573 шт. в диапазоне 32329 - 42759. Время  доступа к SQL: 3,6882699c.
+
+20.05.2015 13:04:08 [Info] Время обработки пачки: 00:00:06.2497202 (6,25 c)
+BulkSize: 1000
+BulkObjects: 1000
+BulkRelations: 0
+_savedBulkCount: 1
+Обработано объектов: 1000
+    Task: 1000
+Создано объектов: 1000
+    Otm: 1000
+
+20.05.2015 13:04:11 [Info] Время обработки пачки: 00:00:03.3025343 (3,30 c)
+BulkSize: 1000
+BulkObjects: 1000
+BulkRelations: 0
+_savedBulkCount: 2
+Обработано объектов: 1000
+    Task: 1000
+Создано объектов: 1000
+    Otm: 1000
+
+20.05.2015 13:04:14 [Info] Время обработки пачки: 00:00:02.3835043 (2,38 c)
+BulkSize: 1000
+BulkObjects: 1000
+BulkRelations: 0
+_savedBulkCount: 3
+Обработано объектов: 1000
+    Task: 1000
+Создано объектов: 1000
+    Otm: 1000
+
+20.05.2015 13:04:16 [Info] Время обработки пачки: 00:00:02.1958447 (2,20 c)
+BulkSize: 1000
+BulkObjects: 1000
+BulkRelations: 0
+_savedBulkCount: 4
+Обработано объектов: 1000
+    Task: 1000
+Создано объектов: 1000
+    Otm: 1000
+
+20.05.2015 13:04:18 [Info] Время обработки пачки: 00:00:02.1325434 (2,13 c)
+BulkSize: 1000
+BulkObjects: 1000
+BulkRelations: 0
+_savedBulkCount: 5
+Обработано объектов: 1000
+    Task: 1000
+Создано объектов: 1000
+    Otm: 1000
+
+20.05.2015 13:04:20 [Info] Время обработки пачки: 00:00:02.0123115 (2,01 c)
+BulkSize: 1000
+BulkObjects: 1000
+BulkRelations: 0
+_savedBulkCount: 6
+Обработано объектов: 1000
+    Task: 1000
+Найдено дубликатов объектов: 1
+    Otm: 1
+Создано объектов: 999
+    Otm: 999
+
+20.05.2015 13:04:22 [Info] Время обработки пачки: 00:00:02.2433510 (2,24 c)
+BulkSize: 1000
+BulkObjects: 1000
+BulkRelations: 0
+_savedBulkCount: 7
+Обработано объектов: 1000
+    Task: 1000
+Создано объектов: 1000
+    Otm: 1000
+
+20.05.2015 13:04:22 [Info] Больше нет новых объектов [Task]
+
+20.05.2015 13:04:24 [Info] Время обработки пачки: 00:00:01.3502706 (1,35 c)
+BulkSize: 1000
+BulkObjects: 572
+BulkRelations: 0
+_savedBulkCount: 8
+Обработано объектов: 573
+    Task: 573
+Найдено дубликатов объектов: 1
+    Otm: 1
+Создано объектов: 572
+    Otm: 572
+
+20.05.2015 13:04:24 [Info] Импорт завершен
+Импорт завершен: 20.05.2015 13:04:24
+Длительность импорта: 00:00:25.7964885 (25,80 c)
+_bulkSize: 1000
+_doFindDuplicateObjects: True
+_doFindDuplicateRelations: True
+_doMakeAnaliticalRelations: True
+_talkDuplicationEpsilon: 1
+_smsDuplicationEpsilon: 1
+_forceGetAllObjects: True
+_forceGetAllObjectsDaysBefore: 3000
+_objectSettings.lastModifyTalk: 26.03.2015 4:03:54
+_objectSettings.lastModifySms: 26.03.2015 4:04:49
+_objectSettings.lastModifyStenogramm: 10.12.2014 3:05:07
+_objectSettings.lastModifyTask: 11.11.2012 15:55:40
+_objectSettings.lastModifyPlace: 11.11.2012 15:55:40
+_objectSettings.lastTalkId: 60908575
+_objectSettings.lastSmsId: 8169154
+_objectSettings.lastTaskId: 0
+_objectSettings.lastPlaceId: 50300628
+_shortBulkReport: False
+Address: testmag8
+Database: MagTalksBase
+Login: admin
+ImportTalks: False
+ImportSms: False
+ImportLocations: False
+ImportStenograms: False
+ImportOtm: True
+ImportSpeakers: False
+ImportAbonents: False
+AnalyticalMarks: Обработан; Важный; Не интересен; Выполнить; Нет ответа; Выполнен; Не прослушивается; Статистика; Записано Этн.; Этн.Выполнен; Записать на диск; Чужой; Пусто; Не доступен; Иностранный; Не наш объект; В работе; Записано Рус.; Записано Иностр.; Записано; Приостановлено; Выполнено для ВП; Дубль; Детализация; Сотрудник; Для аналитики
+NormalizeShortPhones: False
+LinkTalksToOtm: False
+Требуется обработать объектов: 7573
+  Новых объектов: 7573
+    Talk: 0
+    Sms: 0
+    Task: 7573
+    Stenogram: 0
+  Оставшиеся с прошлого раза: 0
+    Talk: 0
+    Sms: 0
+    Task: 0
+    Stenogram: 0
+Обработано объектов: 7573
+    Task: 7573
+Найдено дубликатов объектов: 2
+    Otm: 2
+Создано объектов: 7571
+    Otm: 7571
+Создано связей: 0
+Обновлено объектов: 0
+Объектов обработано с ошибкой (оставлено на следующую итерацию): 0
+
+20.05.2015 13:04:24 [Info] Время доступа к БД:
+CreateNodes: 00:00:21.1890495 (21,1890495s)
+GetNodesByParent: 00:00:00 (0s)
+UpdateNode: 00:00:00 (0s)
+CreateRelations: 00:00:00 (0s)
+GetBulkRelations: 00:00:00.1971852 (0,1971852s)
