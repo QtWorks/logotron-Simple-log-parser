@@ -1,0 +1,26 @@
+IDI_ICON1 ICON DISCARDABLE "icon/logotron-blue.ico"
+
+1 VERSIONINFO
+PRODUCTVERSION 	1,0,1,0
+FILEVERSION    	1,0,1,0
+FILEOS         	0x4
+FILETYPE       	0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",      "orion-project.org\0"
+            VALUE "FileVersion",      "1.0.1.0\0"
+            VALUE "InternalName",     "logotron\0"
+            VALUE "LegalCopyright",   "Chunosov N.I. © 2016\0"
+            VALUE "OriginalFilename", "logotron.exe\0"
+            VALUE "ProductName",      "Logotron\0"
+            VALUE "ProductVersion",   "1.0.1.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252 /* English */
+    END
+END

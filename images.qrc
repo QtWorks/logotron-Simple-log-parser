@@ -1,0 +1,11 @@
+<RCC>
+    <qresource>
+        <file alias="main_icon">icon/logotron-blue.svg</file>
+        <file alias="background">img/background.svg</file>
+        <file alias="open">img/open.svg</file>
+        <file alias="check_all">img/check_all_on_16.png</file>
+        <file alias="check_none">img/check_all_off_16.png</file>
+        <file alias="check_invert">img/check_invert_16.png</file>
+        <file alias="open_folder">img/proj_open_16.png</file>
+    </qresource>
+</RCC>
