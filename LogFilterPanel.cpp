@@ -1,6 +1,8 @@
 #include "LogFilterPanel.h"
+
 #include "helpers/OriWidgets.h"
 #include "helpers/OriDialogs.h"
+#include "helpers/OriLayouts.h"
 #include "tools/OriSettings.h"
 
 #include <QApplication>
@@ -15,6 +17,8 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include <QScrollArea>
+
+using namespace Ori::Layouts;
 
 LogItemTypeFilterView::LogItemTypeFilterView(LogFilterBase *filter, const QString& title)
 {
@@ -41,7 +45,11 @@ LogItemTextFilterView::LogItemTextFilterView(LogItemTextFilter* filter, PFilterL
     _menu->addAction(tr("Edit..."), this, SLOT(editFilter()));
     _menu->addAction(tr("Remove"), this, SLOT(removeFilter()));
 
-    Ori::Gui::layoutH(this, 0, 6, { _flag = new QCheckBox, _text = new QLabel, 0 });
+    LayoutH({
+                _flag = new QCheckBox,
+                _text = new QLabel,
+                Stretch()
+            }).setMargin(0).setSpacing(6).useFor(this);
 
     _flag->setChecked(_filter->enabled());
     _text->setText(_filter->text());
@@ -63,13 +71,12 @@ void LogItemTextFilterView::editFilter()
     useRegex->setChecked(_filter->useRegex());
     textEdit->setPlainText(_filter->text());
     Ori::Gui::setFontMonospace(textEdit);
-    QDialog d(qApp->activeWindow());
-    Ori::Dlg::prepareDialog(&d, Ori::Gui::widgetV({ useRegex, textEdit }), nullptr);
-    Ori::Settings::restoreWindow("TextFilterDialog", &d);
+    Ori::Dlg::Dialog d(Ori::Gui::widgetV({ useRegex, textEdit }));
+    //Ori::Settings::restoreWindow("TextFilterDialog", &d);
     textEdit->setFocus();
-    if (Ori::Dlg::show(&d))
+    if (d.exec())
     {
-        Ori::Settings::storeWindow("TextFilterDialog", &d);
+        //Ori::Settings::storeWindow("TextFilterDialog", &d);
         auto text = textEdit->toPlainText().trimmed();
         if (!text.isEmpty() && text != _filter->text())
         {
@@ -108,22 +115,21 @@ QLabel* headerLabel(const QString& text)
 
 LogFilterPanel::LogFilterPanel(QWidget *parent) : QWidget(parent)
 {
-    Ori::Gui::layoutV(this,
-    {
+    LayoutV({
         headerLabel(tr("Include")),
         makeItemTypeFilter(LogItem::Info, tr("Info")),
         makeItemTypeFilter(LogItem::Warning, tr("Warning")),
         makeItemTypeFilter(LogItem::Error, tr("Error")),
         makeItemTypeFilter(LogItem::Debug, tr("Debug")),
-        Ori::Gui::defaultSpacing(),
+        Space(6),
         _searchingFilters = new QVBoxLayout,
         Ori::Gui::button(tr("Append..."), this, SLOT(appendSearchingFilter())),
-        Ori::Gui::defaultSpacing(3),
+        Space(6),
         headerLabel(tr("Exclude")),
         _excludingFilters = new QVBoxLayout,
         Ori::Gui::button(tr("Append..."), this, SLOT(appendExcludingFilter())),
-        0
-    });
+        Stretch(),
+    }).useFor(this);
 }
 
 LogItemTypeFilterView* LogFilterPanel::makeItemTypeFilter(LogItem::Type type, const QString& title)

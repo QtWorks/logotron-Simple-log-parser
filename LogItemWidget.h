@@ -4,7 +4,7 @@
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
-class QTextBrowser;
+class QPlainTextEdit;
 QT_END_NAMESPACE
 
 class LogItem;
@@ -19,7 +19,7 @@ public:
     const LogItem* item() const { return _item; }
 
 private:
-    QTextBrowser* _browser;
+    QPlainTextEdit* _browser;
     const LogItem* _item;
 };
 

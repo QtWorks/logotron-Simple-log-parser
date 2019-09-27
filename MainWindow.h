@@ -7,7 +7,7 @@
 QT_BEGIN_NAMESPACE
 class QBoxLayout;
 class QLabel;
-class QTextBrowser;
+class QPlainTextEdit;
 QT_END_NAMESPACE
 
 class LogItem;
@@ -35,7 +35,7 @@ private:
     QLabel *_statusCountInfo, *_statusCountWarning, *_statusCountError, *_statusCountDebug;
     bool _justStarted = true;
     QString _recentPath;
-    QTextBrowser* _logItemView;
+    QPlainTextEdit* _logItemView;
     QDockWidget *_dockRecordText, *_dockfilterPanel;
     QAction *_actionOpenDir;
 

@@ -7,6 +7,7 @@
 #include "RegexExamWindow.h"
 #include "helpers/OriWindows.h"
 #include "helpers/OriWidgets.h"
+#include "helpers/OriLayouts.h"
 #include "tools/OriSettings.h"
 #include "tools/OriWaitCursor.h"
 #include "widgets/OriBackWidget.h"
@@ -25,6 +26,7 @@
 #include <QPushButton>
 #include <QStatusBar>
 #include <QTextBrowser>
+#include <QPlainTextEdit>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
@@ -54,7 +56,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     addDockWidget(Qt::LeftDockWidgetArea, _dockfilterPanel);
     connect(_filterPanel, SIGNAL(changed()), this, SLOT(updateFilter()));
 
-    _logItemView = Ori::Gui::logView(11);
+    _logItemView = new QPlainTextEdit;
+    Ori::Gui::setFontMonospace(_logItemView);
     _dockRecordText = new QDockWidget(tr("Record"));
     _dockRecordText->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable | QDockWidget::DockWidgetVerticalTitleBar);
     _dockRecordText->setWidget(_logItemView);
@@ -110,13 +113,21 @@ QBoxLayout* MainWindow::makeStartPageCommand(QAction* action)
 QWidget* MainWindow::createStartPage()
 {
     auto w = new Ori::Widgets::BackWidget(":/background");
-    Ori::Gui::layoutH(w, {0, Ori::Gui::layoutV({ 0, makeStartPageCommand(_actionOpenDir), 0 }), 0 });
+    Ori::Layouts::LayoutH({
+        Ori::Layouts::Stretch(),
+        Ori::Layouts::LayoutV({
+            Ori::Layouts::Stretch(),
+            makeStartPageCommand(_actionOpenDir),
+            Ori::Layouts::Stretch(),
+        }),
+        Ori::Layouts::Stretch(),
+    }).useFor(w);
     return w;
 }
 
 QWidget* MainWindow::createRecordsPage()
 {
-    return Ori::Gui::widget(Ori::Gui::layoutV(3, 3, {_logTable}));
+    return Ori::Layouts::LayoutV({_logTable}).setMargin(3).makeWidget();
 }
 
 void MainWindow::createStatusBar()
@@ -257,7 +268,7 @@ void MainWindow::updateFilter()
 
 void MainWindow::showCurrentItem(const LogItem* item)
 {
-    _logItemView->setText(item->text);
+    _logItemView->setPlainText(item->text);
     _dockRecordText->setWindowTitle(tr("Record [%1]").arg(item->number()));
 }
 

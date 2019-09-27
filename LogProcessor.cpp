@@ -61,6 +61,10 @@ FileReader::FileReader(const QString& file, const QString& encoding): _file(file
 {
 }
 
+FileReader::~FileReader()
+{
+}
+
 QString FileReader::read()
 {
     QFile input(_file);

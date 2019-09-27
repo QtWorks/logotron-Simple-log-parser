@@ -1,12 +1,13 @@
 QT += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-include("../orion-qt/orion.pri")
+include($$_PRO_FILE_PWD_/orion/orion.pri)
 
 TARGET = logotron
 TEMPLATE = app
 
 SOURCES += main.cpp\
+    Appearance.cpp \
     MainWindow.cpp \
     LogItem.cpp \
     LogProcessor.cpp \
@@ -17,6 +18,7 @@ SOURCES += main.cpp\
     RegexExamWindow.cpp
 
 HEADERS  += \
+    Appearance.h \
     MainWindow.h \
     LogItem.h \
     LogProcessor.h \

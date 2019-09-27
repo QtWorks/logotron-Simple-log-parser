@@ -51,6 +51,7 @@ class FileReader
 {
 public:
     FileReader(const QString& file, const QString& encoding);
+    virtual ~FileReader();
 
     QString read();
 
@@ -102,7 +103,7 @@ class LogProcessor : public QObject
     Q_OBJECT
 
 public:
-    LogProcessor(QObject* parent = 0);
+    LogProcessor(QObject* parent = nullptr);
 
     const QString& path() const { return _path; }
     const LogItems* log() const { return &_log; }

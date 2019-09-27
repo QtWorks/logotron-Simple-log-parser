@@ -2,11 +2,13 @@
 #include "helpers/OriWidgets.h"
 #include "helpers/OriDialogs.h"
 #include "tools/OriSettings.h"
+#include "helpers/OriLayouts.h"
 
 #include <QBoxLayout>
 #include <QCheckBox>
 #include <QDateTime>
 #include <QDebug>
+#include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QGroupBox>
 #include <QListWidget>
@@ -176,7 +178,11 @@ OpenFilesDialog::OpenFilesDialog(QWidget *parent) : QDialog(parent)
     _listFiles->setAlternatingRowColors(true);
     _listFiles->setSelectionMode(QAbstractItemView::MultiSelection);
 
-    Ori::Dlg::prepareDialog(this, tabs, nullptr);
+    auto buttons = new QDialogButtonBox(QDialogButtonBox::Open | QDialogButtonBox::Cancel);
+    connect(buttons, &QDialogButtonBox::accepted, this, &QDialog::accept);
+    connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
+
+    Ori::Layouts::LayoutV({tabs, buttons}).useFor(this);
 
     restoreState();
 

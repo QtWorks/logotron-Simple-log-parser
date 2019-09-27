@@ -1,4 +1,7 @@
 #include "LogTableWidget.h"
+
+#include "Appearance.h"
+
 #include "helpers/OriWidgets.h"
 
 #include <QDebug>
@@ -8,10 +11,15 @@
 #include <QStyledItemDelegate>
 #include <QTableView>
 
-#define TABLE_COL_COUNT 3
-#define TABLE_COL_INDEX 0
-#define TABLE_COL_MOMENT 1
-#define TABLE_COL_MESSAGE 2
+namespace {
+
+enum {
+    TABLE_COL_INDEX,
+    TABLE_COL_MOMENT,
+    TABLE_COL_MESSAGE,
+
+    TABLE_COL_COUNT
+};
 
 class LogTableItemDelegate : public QStyledItemDelegate
 {
@@ -22,22 +30,25 @@ public:
 
     void initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const override
     {
+        static QBrush brushError(Appearance::colorError());
+        static QBrush brushWarning(Appearance::colorWarning());
+        static QBrush brushDebug(Appearance::colorDebug());
+
         QStyledItemDelegate::initStyleOption(option, index);
-        QStyleOptionViewItemV4 *optionV4 = qstyleoption_cast<QStyleOptionViewItemV4*>(option);
         int idx = index.sibling(index.row(), TABLE_COL_INDEX).data().toInt();
         LogItem* item = items->items().at(idx);
         switch (item->type)
         {
         case LogItem::Error:
-            optionV4->backgroundBrush = QColor(255, 0, 0, 55);
+            option->backgroundBrush = brushError;
             break;
 
         case LogItem::Warning:
-            optionV4->backgroundBrush = QColor(255, 153, 0, 55);
+            option->backgroundBrush = brushWarning;
             break;
 
         case LogItem::Debug:
-            optionV4->backgroundBrush = QColor(0, 0, 0, 35);
+            option->backgroundBrush = brushDebug;
             break;
 
         case LogItem::Info:
@@ -85,7 +96,7 @@ public:
         return QVariant();
     }
 
-    QVariant data(const QModelIndex &index, int role) const
+    QVariant data(const QModelIndex &index, int role) const override
     {
         LogItem* item = _items->items().at(index.row());
 
@@ -121,6 +132,8 @@ private:
     const LogFilters* _filters;
 };
 
+} // namespace
+
 //--------------------------------------------------------------------------------------------------
 
 LogTableWidget::LogTableWidget(QWidget *parent) : Ori::TableWidgetBase(parent)
@@ -154,7 +167,7 @@ QAbstractItemModel* LogTableWidget::createTableModel()
     if (sourceModel) delete sourceModel;
     sourceModel = new LogTableModel(_items);
     if (itemDelegate)
-        ((LogTableItemDelegate*)itemDelegate)->items =_items;
+        dynamic_cast<LogTableItemDelegate*>(itemDelegate)->items =_items;
 
     proxyModel = new LogItemFilterProxyModel(_items, _filters);
     proxyModel->setSourceModel(sourceModel);
